@@ -1,0 +1,104 @@
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+
+/* =========================================
+   OPEN / CLOSE MOBILE MENU
+========================================= */
+
+
+menuToggle.addEventListener(
+    "click",
+    function () {
+
+        navLinks.classList.toggle(
+            "active"
+        );
+
+    }
+);
+
+
+
+/* =========================================
+   CLOSE MENU AFTER CLICKING A LINK
+========================================= */
+
+
+const navigationLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+navigationLinks.forEach(
+    function (link) {
+
+
+        link.addEventListener(
+            "click",
+            function () {
+
+
+                navLinks.classList.remove(
+                    "active"
+                );
+
+
+            }
+        );
+
+
+    }
+);
+
+
+
+/* =========================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+========================================= */
+
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+
+        const clickedInsideMenu =
+            navLinks.contains(
+                event.target
+            );
+
+
+        const clickedMenuButton =
+            menuToggle.contains(
+                event.target
+            );
+
+
+        if (
+            !clickedInsideMenu &&
+            !clickedMenuButton
+        ) {
+
+
+            navLinks.classList.remove(
+                "active"
+            );
+
+
+        }
+
+
+    }
+);
